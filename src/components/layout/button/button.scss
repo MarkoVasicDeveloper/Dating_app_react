@@ -1,0 +1,40 @@
+@import '../../../defaultStule.scss';
+
+.succes-button{
+    background-color: $buttonSecondary;
+    border: 1px solid $otherButton;
+    border-radius: 10px;
+    padding: 0.3rem;
+    color: $otherButton;
+    font-size: 1.5rem;
+    margin-block: 1rem;
+    transition: 300ms all;
+
+    &:hover{
+        transition: 300ms all;
+        border: 1px solid $buttonSecondary;
+        color: $buttonSecondary;
+        background-color: $otherButton;
+        cursor: pointer; 
+    }
+}
+
+.disabled{
+    font-size: 1.5rem;
+    margin-block: 1rem;
+    border-radius: 10px;
+    padding: 0.3rem;
+    background-color: $buttonPrimary;
+    border: 1px solid $secondary;
+    cursor: no-drop;
+}
+
+.default{
+    width: 100px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 0.3rem;
+    font-size: 1.5rem;
+    margin: 2rem;
+    color: $primaryText;
+}
