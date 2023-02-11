@@ -1,0 +1,29 @@
+@import '../../defaultStule.scss';
+
+#modal {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba($secondary, 0.2);
+    backdrop-filter: blur(20px);
+
+    .modal-content {
+        width: clamp(300px, 80%, 600px);
+    }
+}
+
+.fixed {
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    padding: 0.3rem;
+    background-color: transparent;
+    border: 1px solid $buttonSecondary;
+    color: $primary;
+    border-radius: 5px;
+    cursor: pointer;
+}
