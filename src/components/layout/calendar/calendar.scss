@@ -1,0 +1,12 @@
+@import '../../../defaultStule.scss';
+
+.react-datepicker__input-container > input{
+    background-color: transparent;
+    border: 2px solid #d4d8de;
+    border-radius: 5px;
+    padding: 0.2rem;
+    margin-block: 0.5rem;
+}
+.react-datepicker__input-container > input::placeholder{
+    color: #a4a7aa;
+}

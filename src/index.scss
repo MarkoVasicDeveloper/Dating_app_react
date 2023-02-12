@@ -15,17 +15,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-
-.invalid-span{
+.important-message{
+  margin-top: 0.5rem;
   font-style: italic;
   color: $danger;
   font-size: 1.3rem;
-  font-weight: 600;
+}
+
+.invalid-span{
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: $danger;
+  font-size: .7rem;
 }
 
 .succes-span{

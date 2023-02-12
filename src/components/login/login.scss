@@ -2,7 +2,7 @@
 
 section{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient($primary, $secondary);
     padding: #{"max(5%, 2rem)"} #{"max(3%, .5rem)"};
 

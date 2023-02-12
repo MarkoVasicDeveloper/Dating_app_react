@@ -7,6 +7,8 @@ import { UserProvider } from './context/user.context';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Router, Routes } from 'react-router';
 import { Home } from './components/home/home';
+import { SingUp } from './components/singUp/singUp';
+import { About } from './components/singUp/about/about';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,6 +18,8 @@ root.render(
     <UserProvider>
       <Routes>
         <Route path='/' element={ <LogIn /> } />
+        <Route path='/singup' element={ <SingUp /> } />
+        <Route path='/singup/about' element={ <About /> } />
         <Route path='/Home' element={ <Home /> } />
       </Routes>
     </UserProvider>

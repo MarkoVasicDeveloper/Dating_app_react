@@ -31,11 +31,11 @@ export function LogIn() {
         setMessage('')
         
         const response = await apiRequest('/auth/login', 'post', 
-            {username, password, lady: role === 'lady' ? true : false} , role as any)
-        console.log(response)
+            {username, password, lady: role === 'lady' ? true : false} , role as any);
+        
         if(response.status === 'error') return setMessage('Something went wrong!');
 
-        if(response.data.statusCode === -20001) return setMessage('Na mail Vam je poslat link za verifikaciju!')
+        if(response.data.statusCode === -20001) return setMessage('Na mail Vam je poslat link za verifikaciju!');
         
         if(response.data.status === 'error') return setMessage('Pogresna lozinka ili korisnicko ime!');
 
@@ -56,7 +56,7 @@ export function LogIn() {
             <form>
                 <h2>Log in</h2>
                 <div className="message">
-                    <span className='invalid-span'>{message}</span>
+                    <span className='important-message'>{message}</span>
                 </div>
                 <Input required id='username' name='username' title='Korisnicko ime:' onChangeInput={setUsername} />
                 <Input required id='password' name='password' title='Lozinka:' onChangeInput={setPassword} type='password' />

@@ -18,7 +18,6 @@ export function ResetPassword() {
     async function getResetLink() {
         setMessage({status: '', message: ''})
         const resetLink = await apiRequest(`/resetLink/${email}/${role}`, 'get', '', role as any);
-        console.log(resetLink)
 
         if(resetLink.data.status === 'error') return setMessage({status: 'error', message: 'Pogresna mail adresa!'});
         setMessage({status: 'ok', message: 'Link za reset je poslat na Vas mail!'})

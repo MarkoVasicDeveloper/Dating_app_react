@@ -1,0 +1,30 @@
+@import '../../../defaultStule.scss';
+
+.select-container{
+    width: max-content;
+    margin-top: 0.5rem;
+
+    label{
+        margin-right: .5rem;
+        margin-bottom: .7rem;
+    }
+
+    .select-input{
+        background-color: transparent;
+        border: 2px solid #d4d8de;
+        border-radius: 5px;
+
+        .option{
+            background-color: rgba($secondary, 0.5);
+        }
+    }
+
+    .message{
+        span{
+            margin-top: 0.5rem;
+            font-style: italic;
+            color: $danger;
+            font-size: .7rem;
+        }
+    }
+}
