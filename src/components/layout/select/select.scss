@@ -1,8 +1,8 @@
-@import '../../../defaultStule.scss';
+@import '../../../scss/defaultStule.scss';
 
 .select-container{
     width: max-content;
-    margin-top: 0.5rem;
+    margin: 0.5rem;
 
     label{
         margin-right: .5rem;
@@ -16,15 +16,6 @@
 
         .option{
             background-color: rgba($secondary, 0.5);
-        }
-    }
-
-    .message{
-        span{
-            margin-top: 0.5rem;
-            font-style: italic;
-            color: $danger;
-            font-size: .7rem;
         }
     }
 }

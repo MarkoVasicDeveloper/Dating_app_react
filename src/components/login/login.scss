@@ -1,4 +1,4 @@
-@import '../../defaultStule.scss';
+@import '../../scss/defaultStule.scss';
 
 section{
     width: 100%;
@@ -39,6 +39,7 @@ section{
 
         .radio-inputs{
             display: flex;
+            flex-wrap: wrap;
         }
     }
 }

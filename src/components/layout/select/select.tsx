@@ -5,7 +5,7 @@ import './select.scss';
 interface selectOptions {
     title: string
     id: string
-    options: string[]
+    options: string[] | number[] | (string | number)[]
     required?: boolean
     onChange: any
 }
@@ -38,11 +38,11 @@ export function Select({ title, id, options, required, onChange }: selectOptions
                 onFocus={() => setDirty(true)}
             >
                 {
-                    options.map((value: string, index: number) => <option className="option" key={index} value={value}>{value}</option>)
+                    options.map((value: string | number, index: number) => <option className="option" key={index} value={value}>{value}</option>)
                 }
             </select>
-            <div className="message">
-                <span>{message}</span>
+            <div>
+                <span className="invalid-input-message">{message}</span>
             </div>
         </div>
     )

@@ -39,12 +39,13 @@ export function LogIn() {
         
         if(response.data.status === 'error') return setMessage('Pogresna lozinka ili korisnicko ime!');
 
-        setUser((prev: any) => [...prev, {
+        setUser({
             id: response.data.id,
             username: response.data.username,
             token: response.data.token,
             role: response.data.role
-        }])
+        });
+        
         navigate('/Home', {replace: true})
     }
     

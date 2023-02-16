@@ -31,7 +31,7 @@ export function ResetPassword() {
                 <Input required id='lady' name='role' title='Dama:' onChangeInput={setRole} type='radio' footnoteTitle='Izaberite ulogu!'/>
                 <Input required id='gentleman' name='role' title='Dzentlman:' onChangeInput={setRole} type='radio' footnoteTitle='Izaberite ulogu!'/>
             </div>
-            <span className={message.status === 'ok' ? 'succes-span' : 'invalid-span'} >{message.message}</span>
+            <span className={message.status === 'ok' ? 'succes-message' : 'invalid-input-message'} >{message.message}</span>
             <div className="submit-button">
                 <Button type="submit" disabled = {disabled} title={"Posalji"} onClickFunction={getResetLink} />
             </div>

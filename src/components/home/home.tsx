@@ -3,7 +3,7 @@ import { UserContext } from "../../context/user.context"
 
 export function Home() {
 
-    const [ user ] = useContext(UserContext);
+    const [ user ] = useContext(UserContext) as any;
 
     useEffect(() => {
       console.log(user)

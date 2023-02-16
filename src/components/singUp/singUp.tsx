@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiRequest } from "../../api/apiRequest";
+import { UserContext } from "../../context/user.context";
 import { Button } from "../layout/button/button";
 import { Calendar, subtractYears } from "../layout/calendar/calendar";
 import { Checkbox } from "../layout/checkbox/checkbox";
@@ -19,7 +20,9 @@ export function SingUp() {
     const [ role, setRole ] = useState('') as any;
     const [ policy, setPolicy ] = useState({value: '', checked: false});
     const [ disabled, setDisabled ] = useState(true);
-    const [ message, setMessage ] = useState('')
+    const [ message, setMessage ] = useState('');
+
+    const [ user, setUser ] = useContext(UserContext) as any;
 
     const navigate = useNavigate();
 
@@ -38,11 +41,18 @@ export function SingUp() {
         const response = await apiRequest(`/api/add/${role}`, 'post', {
             username, password, email, city, state, rules: policy.checked ? '1' : '0', notifications: '1', dateOfBirth: date.toLocaleDateString()
         }, role);
-        console.log(response);
+        console.log(response.data)
 
         if(response.status === 'error') return setMessage('Something went wrong!');
 
         if(response.data.statusCode === -1001 || response.data.statusCode === -2001) return setMessage('Korisnicko ime je zauzeto ili je mejl vec iskoriscen!');
+
+        setUser({
+            id: response.data.gentlemanId || response.data.ladyId,
+            username: response.data.username,
+            token: null,
+            role: response.data.ladyId ? 'lady' : 'gentleman'
+        });
 
         navigate('/singup/about', {replace: true});
     }

@@ -38,7 +38,7 @@ export function Input({ onChangeInput, type, name, id, title, required, footnote
         <div className={ type === 'radio' ? 'input-div radio' : 'input-div'}>
             <label htmlFor={ id } title = { footnoteTitle }>{ title }</label>
             <input 
-                className={ invalid ? 'invalid' : 'default-input'}
+                className={ invalid ? 'input-invalid' : 'default-input'}
                 name = { name }
                 type = { type || 'text'}
                 onChange={(e) => validation(e.target.value)}
@@ -49,7 +49,7 @@ export function Input({ onChangeInput, type, name, id, title, required, footnote
                 title = { footnoteTitle }
                 placeholder = { placeholder }
             />
-            <span>{message}</span>
+            <span className='invalid-input-message'>{message}</span>
         </div>
     )
 }

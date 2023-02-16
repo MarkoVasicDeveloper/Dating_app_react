@@ -1,10 +1,9 @@
-@import '../../../defaultStule.scss';
+@import '../../../scss/defaultStule.scss';
 
 .checkbox-container{
     margin-block: 1rem;
 
     label{
-        font-family: $primaryFont;
         font-style: italic;
     }
 

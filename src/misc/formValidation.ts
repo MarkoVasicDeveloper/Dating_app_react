@@ -17,6 +17,10 @@ export function formValidation(value: string, field: string ,dirty: boolean, req
             return new ValidationResponse(false, 'Imejl nije validan!');
     }
 
+    if(field === 'textarea' && required && value.length < 50){
+        return new ValidationResponse(false, 'Ovo polje mora imati barem 50 karaktera!');
+    }
+
     return {valid: true, value };
 }
 

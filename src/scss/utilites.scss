@@ -1,0 +1,12 @@
+@import './defaultStule.scss';
+
+@mixin input($color: $border, $shadow: none) {
+    padding: 0.3rem;
+    padding-left: 5%;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px $shadow;
+    background-color: transparent;
+    border: 2px solid $color;
+    color: $primaryText;
+}

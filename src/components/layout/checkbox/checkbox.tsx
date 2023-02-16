@@ -42,7 +42,7 @@ export function Checkbox({ id, onChange, value, title, required, implementClass 
                 onFocus = {() => setDirty(true)}
             />
             <label className={implementClass} htmlFor={id}>{title}</label>
-            <div><span className='invalid-span'>{message}</span></div>
+            <div><span className='invalid-input-message'>{message}</span></div>
         </div>
     )
 }

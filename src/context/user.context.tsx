@@ -1,9 +1,14 @@
 import { createContext, useState } from "react";
 
-export const UserContext = createContext([]);
+export const UserContext = createContext({});
 
 export function UserProvider ({ children } : any) {
-    const [ user, setUser ] = useState([]);
+    const [ user, setUser ] = useState({
+        id: null,
+        username: null,
+        token: null,
+        role: null
+    });
 
     const value = [ user, setUser ] as any;
 
