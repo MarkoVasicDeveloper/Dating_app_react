@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.scss';
 import { UserProvider } from './context/user.context';
 import { BrowserRouter } from 'react-router-dom';
-import { Route, Router, Routes } from 'react-router';
+import { Route, Routes } from 'react-router';
 import { Home } from './components/home/home';
 import { SingUp } from './components/singUp/singUp';
 import { About } from './components/singUp/about/about';

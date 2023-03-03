@@ -20,13 +20,12 @@ export function apiRequest (
             data: JSON.stringify(body),
             headers: {
                 "Content-Type": "application/json",
-                Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW5pc3RyYXRvciIsImlkIjoxLCJpcEFkZHJlc3MiOiI6OjEiLCJleHBpcmUiOjE2NzU5NjMxODYuMTE2LCJ1c2VybmFtZSI6InRlc3RBZG1pbiIsImlhdCI6MTY3NDg4ODg3N30.4cAIYvQ0TWaQqPB2Iq2hMCWsiq6TbGMG0QafYQDR1N8'
+                Authorization: getToken(role)
             }
         };
 
         axios(requestData)
             .then(res => responseHandler(res, resolve))
-            // .then(res => console.log('ok', res))
             .catch(async err => {
                 if (err.response.status === 401) {
                     const newToken = await refreshToken(role);
@@ -43,7 +42,7 @@ export function apiRequest (
                     saveToken(role, newToken);
           
                     requestData.headers["Authorization"] = getToken(role);
-          
+                    
                     return await repeatRequest(requestData, resolve);
                 }
           
@@ -83,7 +82,7 @@ async function refreshToken(
     role: "lady" | "gentleman" | "gentlemanPremium" | "gentlemanVip" | "administrator"
   ): Promise<string | null> {
       const token = getRefreshToken(role)
-    const path = `auth/refresh/${token}`;
+      const path = `/auth/refresh/${token}`;
    
   
     const refreshTokenRequestData: AxiosRequestConfig = {
@@ -113,7 +112,7 @@ async function repeatRequest(
     axios(requestData)
       .then((res) => {
         let response: ApiResponse;
-  
+        console.log(res)
         if (res.status === 401) {
           response = {
             status: "login",
@@ -146,6 +145,10 @@ function getToken(role: "lady" | "gentleman" | "gentlemanPremium" | "gentlemanVi
 function getRefreshToken(role: "lady" | "gentleman" | "gentlemanPremium" | "gentlemanVip" | "administrator"): string {
     const token = localStorage.getItem("api_refresh_token" + role);
     return token + "";
+}
+
+export function saveRefreshToken(role: "lady" | "gentleman" | "gentlemanPremium" | "gentlemanVip" | "administrator", token: string) {
+  localStorage.setItem("api_refresh_token" + role, token);
 }
 
 export function saveToken(role: "lady" | "gentleman" | "gentlemanPremium" | "gentlemanVip" | "administrator", token: string) {

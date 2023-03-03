@@ -1,1 +1,85 @@
-@import '../../defaultStule.scss';
+@import '../../scss/defaultStyle.scss';
+
+#home{
+    display: flex;
+    padding: 0;
+    background: $primary;
+
+    .bar{
+        flex-grow: 2;
+        flex-basis: 0;
+        background: rgba($secondary, 0.1);
+        display: flex;
+        flex-direction: column;
+
+        .nav{
+            flex-grow: 1;
+            flex-basis: 0;
+            background: linear-gradient(rgba($primary, 0.2), $secondary);
+            padding: 1rem 0.6rem 0.4rem 0.4rem;
+
+            nav{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .otherButtons{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    button{
+                        margin-left: 0.3rem;
+                    }
+
+                    .notification{
+                        position: relative;
+
+                        span{
+                            position: absolute;
+                            width: 25px;
+                            height: 25px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            top: -30%;
+                            right: -15%;
+                            background-color: $danger;
+                            border-radius: 50%;
+                            color: $primaryText;
+                            font-weight: 900;
+                            border: 1px solid $border;
+                            font-size: 0.8rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        .bar-content{
+            flex-grow: 8;
+            flex-basis: 0;
+            border-right: 1px solid rgba($secondary, 0.2);
+            height: 100%;
+        }
+    }
+
+    .main{
+        flex-grow: 4;
+        flex-basis: 0;
+    }
+}
+
+.iconButtons{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    color: $secondary;
+    border: 1px solid $secondary;
+    cursor: pointer;
+    transition: 500ms ease all;
+
+    &:hover{
+        color: $primary;
+        background-color: $secondary;
+    }
+}

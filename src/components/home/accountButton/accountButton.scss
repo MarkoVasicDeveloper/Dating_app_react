@@ -1,0 +1,48 @@
+@import '../../../scss/defaultStyle.scss';
+
+.user{
+    width: max-content;
+    padding: 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    border-radius: 10px;
+    transition: 500ms ease;
+
+    span{
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 1px solid $secondary;
+        background-color: $primary;
+        color: $secondary;
+        transition: 500ms ease;
+    }
+
+    button{
+        border: none;
+        background-color: transparent;
+        transition: 500ms ease;
+        cursor: pointer;
+    }
+
+    &:hover{
+        background-color: $secondary;
+        transition: 500ms ease;
+        cursor: pointer;
+
+        button{
+            color: $primary;
+            transition: 500ms ease;
+        }
+
+        span{
+            background-color: $secondary;
+            color: $primary;
+            transition: 500ms ease;
+        }
+    }
+}

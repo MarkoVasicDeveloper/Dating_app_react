@@ -1,4 +1,4 @@
-@import './scss/defaultStule.scss';
+@import './scss/defaultStyle.scss';
 @import './scss/utilites.scss';
 
 *{
@@ -6,6 +6,29 @@
   padding: 0;
   box-sizing: border-box;
   font-family: $primaryFont;
+  user-select: none;
+}
+
+section{
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient($primary, $secondary);
+  padding: #{"max(5%, 2rem)"} #{"max(3%, .5rem)"};
+}
+
+h1{
+  font-family: $secondaryFont;
+  color: $h1;
+  font-size: clamp(2.2rem, 10vw, 5rem);
+  text-align: center;
+  margin-bottom: #{"min(5%, 2rem)"};
+}
+
+h2{
+  text-align: center;
+  color: $primaryText;
+  font-family: $secondaryFont;
+  margin-bottom: 0.5rem;
 }
 
 .important-message{

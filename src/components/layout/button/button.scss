@@ -1,4 +1,4 @@
-@import '../../../scss/defaultStule.scss';
+@import '../../../scss/defaultStyle.scss';
 
 .succes-button{
     background-color: $buttonSecondary;
@@ -37,4 +37,5 @@
     font-size: 1.5rem;
     margin: 2rem;
     color: $primaryText;
+    cursor: pointer;
 }

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { apiRequest } from "../../api/apiRequest";
 import { UserContext } from "../../context/user.context";
 import { Button } from "../layout/button/button";
-import { Calendar, subtractYears } from "../layout/calendar/calendar";
+import { Calendar } from "../layout/calendar/calendar";
 import { Checkbox } from "../layout/checkbox/checkbox";
 import { Input } from "../layout/input/input";
 import { Select } from "../layout/select/select";
@@ -41,7 +41,6 @@ export function SingUp() {
         const response = await apiRequest(`/api/add/${role}`, 'post', {
             username, password, email, city, state, rules: policy.checked ? '1' : '0', notifications: '1', dateOfBirth: date.toLocaleDateString()
         }, role);
-        console.log(response.data)
 
         if(response.status === 'error') return setMessage('Something went wrong!');
 
@@ -51,7 +50,10 @@ export function SingUp() {
             id: response.data.gentlemanId || response.data.ladyId,
             username: response.data.username,
             token: null,
-            role: response.data.ladyId ? 'lady' : 'gentleman'
+            role: response.data.ladyId ? 'lady' : 'gentleman',
+            
+            photosDestination: `http://localhost:3002/assets/photo/${response.data.role === 'gentleman' ? 'Gentleman' : 'Lady' }`,
+            otherPhotosDestination: `http://localhost:3002/assets/photo/${response.data.role === 'gentleman' ? 'Lady' : 'Gentleman' }`
         });
 
         navigate('/singup/about', {replace: true});
@@ -67,7 +69,7 @@ export function SingUp() {
                         <span className='important-message'>{message}</span>
                     </div>
                     <Input required onChangeInput={setUsername} name={'username'} id={"username"} title={"Korisnicko ime:"} />
-                    <Input required onChangeInput={setPassword} name={'password'} id={"password"} title={"Lozinka:"} />
+                    <Input required type="password" onChangeInput={setPassword} name={'password'} id={"password"} title={"Lozinka:"} />
                     <Input required onChangeInput={setEmail} name={'email'} id={"email"} title={"Imejl:"} />
                     <Input required onChangeInput={setCity} name={'city'} id={"city"} title={"Grad:"} />
                     <Select required title={"Drzava:"} id={"state"} options={['', 'Srbija', 'Crna Gora', 'BIH', 'Slovenija', 'Hrvatska', 'Austrija', 'Ostalo']} onChange={setState} />

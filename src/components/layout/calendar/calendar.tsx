@@ -31,7 +31,7 @@ export function Calendar({setDate, date} : calendarInput) {
 <DatePicker 
         placeholderText="Datum rodjenja"
         minDate={new Date("01-01-1950")}
-        maxDate={subtractYears(new Date, 18)}
+        maxDate={subtractYears(new Date(), 18)}
         required
         renderCustomHeader={({
             date,

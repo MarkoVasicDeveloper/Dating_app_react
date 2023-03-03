@@ -1,0 +1,38 @@
+.card-container{
+    height: 85%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    background-color: aqua;
+    flex-grow: 8;
+    overflow: hidden;
+}
+
+@keyframes hide {
+    0%{
+        z-index: 2;
+    }
+    50%{
+        transform: translateX(-30%) rotateZ(-30deg);
+        opacity: 1;
+    }
+    99%{
+        z-index: 2;
+        transform: translateX(-200%) rotateZ(-30deg);
+    }
+    100%{
+        transform: translateX(0%) rotateZ(0deg);
+        z-index: 0;
+        opacity: 0;
+    }
+}
+
+.show{
+    z-index: 1;
+}
+
+.hideItAnimation{
+    animation: hide 500ms ease forwards;
+}

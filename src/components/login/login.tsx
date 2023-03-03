@@ -1,9 +1,8 @@
-import axios from 'axios';
 import { useContext, useEffect, useState } from 'react'
 import { Button } from '../layout/button/button'
 import { Input } from '../layout/input/input'
 import './login.scss';
-import { apiRequest } from '../../api/apiRequest';
+import { apiRequest, saveToken } from '../../api/apiRequest';
 import { UserContext } from '../../context/user.context';
 import { useNavigate } from 'react-router-dom';
 import { Modal } from '../modal/modal';
@@ -43,8 +42,12 @@ export function LogIn() {
             id: response.data.id,
             username: response.data.username,
             token: response.data.token,
-            role: response.data.role
+            role: response.data.role,
+            photosDestination: `http://localhost:3002/assets/photo/${response.data.role === 'gentleman' ? 'Gentleman' : 'Lady' }`,
+            otherPhotosDestination: `http://localhost:3002/assets/photo/${response.data.role === 'gentleman' ? 'Lady' : 'Gentleman' }`
         });
+
+        saveToken(response.data.role, response.data.token);
         
         navigate('/Home', {replace: true})
     }
@@ -70,6 +73,7 @@ export function LogIn() {
                     <Button title={'Zaboravili ste lozinku?'} implementClass='linkButton' onClickFunction={() => setOpenModal(true)} />
                     <Button title={'Prijavi se'} type = 'submit' onClickFunction={sendData} disabled = {disabledButton} />
                 </div>
+                <Button title={'Nemate nalog?'} onClickFunction={() => navigate('/singup')} implementClass='createAccauntButton' />
             </form>
         </section>
         <Modal open={openModal} close={() => setOpenModal(false)} >

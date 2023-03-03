@@ -37,7 +37,7 @@ export function About() {
         'Slobodan/na': 'free',
         'U braku': 'married',
         'U braku, ali': 'married,but',
-        'Komplikovano': 'compicated',
+        'Komplikovano': 'complicated',
         'U vezi': 'related'
     } as any;
 
@@ -64,7 +64,7 @@ export function About() {
             true_information: trueInformation
         }, user.role);
 
-        if(response.status !== 'error') return navigate('/home', {replace: true})
+        if(response.status !== 'error') return navigate('/', {replace: true})
         setMessage('Doslo je do greske!')
     }
     
@@ -96,7 +96,6 @@ export function About() {
                     <Button disabled={disabled} type="submit" title={"Posalji"} onClickFunction={sendData} />
                 </div>
             </form>
-            <button onClick={() => console.log(user)} >sss</button>
         </section>
     )
 }

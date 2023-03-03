@@ -1,18 +1,6 @@
-@import '../../scss/defaultStule.scss';
+@import '../../scss/defaultStyle.scss';
 
-section{
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient($primary, $secondary);
-    padding: #{"max(5%, 2rem)"} #{"max(3%, .5rem)"};
-
-    h1{
-        font-family: $secondaryFont;
-        color: $h1;
-        font-size: clamp(2.2rem, 10vw, 5rem);
-        text-align: center;
-        margin-bottom: #{"min(5%, 2rem)"};
-    }
+#login-page{
 
     .message {
         display: flex;
@@ -23,13 +11,6 @@ section{
     form{
         margin: 0 auto;
         width: #{"max(250px, 70vw)"};
-
-        h2{
-            text-align: center;
-            color: $primaryText;
-            font-family: $secondaryFont;
-            margin-bottom: 0.5rem;
-        }
 
         .submit{
             display: flex;
@@ -49,4 +30,14 @@ section{
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+.createAccauntButton{
+    width: max-content;
+    background-color: transparent;
+    padding: 0.3rem;
+    border: 1px solid $warning;
+    cursor: pointer;
+    color: $warning;
+    border-radius: 10px;
 }

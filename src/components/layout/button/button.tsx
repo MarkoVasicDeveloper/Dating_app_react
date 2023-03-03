@@ -1,9 +1,9 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import './button.scss';
 
-interface Button {
+interface ButtonProps {
     type?: 'submit' | 'button';
-    title: string;
+    title: any;
     disabled?: boolean | undefined;
     onClickFunction: any;
     implementClass?: string;
@@ -11,7 +11,7 @@ interface Button {
     default?: boolean;
 }
 
-export function Button(data: Button) {
+export function Button(data: ButtonProps) {
 
     const [ implementClasses, setImplementClasses ] = useState('');
 
@@ -19,7 +19,7 @@ export function Button(data: Button) {
         if(data.type === 'submit') return setImplementClasses(data.disabled ? 'disabled' : 'succes-button');
         if(data.implementClass) return setImplementClasses(data.implementClass);
         if(data.default) return setImplementClasses('default')
-    }, [data.disabled])
+    }, [data.disabled, data.default, data.implementClass, data.type])
     
     return (
         <button

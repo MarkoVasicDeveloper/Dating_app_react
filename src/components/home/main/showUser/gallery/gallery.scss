@@ -1,0 +1,99 @@
+@import '../../../../../scss/defaultStyle.scss';
+
+.controls{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem;
+    
+    &>span{
+        font-size: 2.5rem;
+        color: $secondary;
+    }
+
+    &>span:hover{
+        cursor: pointer;
+    }
+}
+
+.img-bar{
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    right: 5px;
+    display: flex;
+    justify-content: space-around;
+
+    div{
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $primary;
+        border: 1px solid $secondary;
+        border-radius: 50%;
+        color: $secondary;
+        font-weight: 600;
+    }
+
+    .active{
+        color: $primary;
+        background-color: $secondary;
+    }
+}
+
+.user-info{
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    bottom: 0px;
+    background: linear-gradient(to top,rgba(0, 0, 0, 1) 5%, transparent);
+    padding: 0%  0 5% 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    color: $thirdText;
+
+    & svg {
+        color: $secondary;
+    }
+
+    & span{
+        margin-inline: 0.5rem;
+        width: max-content;
+        font-family: $secondaryFont;
+        font-size: 1.2rem;
+    }
+
+    .identity{
+        &>span{
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: $secondaryFont;
+        }
+    }
+
+    .other{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+    }
+}
+
+.galery{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: 500ms ease transform;
+    
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
