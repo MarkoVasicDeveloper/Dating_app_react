@@ -74,7 +74,6 @@ export function Gallery({photosLadies, username, city, path, zIndex, about, year
                     <FontAwesomeIcon icon={faHouseFlag} />
                     <span>{city}</span>
                 </div>
-                <button onClick={() => console.log(imgBar.current)} >ddd</button>
                 <div className="other">
                     <div>
                         <FontAwesomeIcon icon={faSchool} />

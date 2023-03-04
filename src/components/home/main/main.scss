@@ -39,13 +39,17 @@
     background: $secondary;
     color: $primary;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
 
     &:hover{
         background: $secondary;
         color: $primary;
         svg{
             transform: rotateZ(360deg);
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             transition: 500ms ease transform;
         }
     }

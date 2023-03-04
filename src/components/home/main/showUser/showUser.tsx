@@ -18,7 +18,7 @@ export function ShowUser({ path, user, zIndex, display, end}: ShowUserProps) {
     const [ index, setIndex ] = useState(0);
 
     useEffect(() => {
-        if(end) return;
+        if(end && display === user.length) return;
         if(zIndex === 1 && display === 0) return setIndex(display);
         if(zIndex === 1) return setIndex(display);
 
@@ -29,7 +29,7 @@ export function ShowUser({ path, user, zIndex, display, end}: ShowUserProps) {
     }, [display])
 
     useEffect(() => {
-        if(end) return;
+        if(end && display === user.length) return;
         if(zIndex === 1 && !didMountRef.current) {
             didMountRef.current = true;
             return

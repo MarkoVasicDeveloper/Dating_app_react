@@ -10,6 +10,7 @@
     align-items: center;
     background: rgba($secondary, 0.2);
     backdrop-filter: blur(20px);
+    z-index: 10;
 
     .modal-content {
         width: clamp(300px, 80%, 600px);
@@ -22,8 +23,14 @@
     right: 5%;
     padding: 0.3rem;
     background-color: transparent;
-    border: 1px solid $buttonSecondary;
-    color: $primary;
+    border: 1px solid $otherButton;
+    color: $secondary;
     border-radius: 5px;
     cursor: pointer;
+    transition: 500ms ease all;
+
+    &:hover{
+        color: $primary;
+        background: $otherButton;
+    }
 }
