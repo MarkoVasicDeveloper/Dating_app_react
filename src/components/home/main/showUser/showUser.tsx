@@ -74,7 +74,7 @@ export function ShowUser({ path, user, zIndex, display, end}: ShowUserProps) {
             maritalStatus: maritalStatus[user[index]?.ladyAbouts[0].maritalStatus] || '',
             profession: user[index]?.ladyAbouts[0].profession || ''
         },
-        years: '22'
+        years: String(new Date().getFullYear() - user[index]?.dataOfBirth.slice(-4)) || ''
     }
     
     return (

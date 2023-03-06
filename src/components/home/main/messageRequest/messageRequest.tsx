@@ -26,7 +26,7 @@ export function MessageRequest({ destination }: RequestProps) {
             'lady' : user.role === 'lady' ? true : false
         }
         const response = await apiRequest('/api/conversationRequest', 'post', body, user.role);
-        if(response.status === 'error') return navigation('login', {replace: true});
+        if(response.status === 'error') return navigation('/', {replace: true});
         if(response.data.statusCode === 200) return setMessage({message: 'Zahtev je uspesno prosledjen!', class: 'succes-message'});
         if(response.data.statusCode === 6001) return setMessage({message: 'Zahtev je vec poslat!', class: 'important-message'});
         setMessage({message: 'Izgleda da imamo neki problem!', class: 'important-message'});

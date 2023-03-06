@@ -39,3 +39,27 @@
     color: $primaryText;
     cursor: pointer;
 }
+
+.danger-button {
+    background: $danger;
+    padding: 0.2rem 0.4rem;
+    border: transparent;
+    color: $thirdText;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 500ms ease all;
+    
+    &:hover{
+        color: #fec400;
+    }
+}
+
+.safe{
+    background: $success;
+    padding: 0.2rem 0.4rem;
+    border: transparent;
+    color: $thirdText;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 500ms ease all;
+}

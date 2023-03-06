@@ -1,0 +1,88 @@
+@import '../../../../scss/defaultStyle.scss';
+
+.request{
+
+    .user-request{
+        border: 1px solid green;
+        margin-block: 1rem;
+        display: grid;
+        grid-template: "img info info info"
+                       "button button button button";
+    
+        .user-request-img{
+            grid-area: img;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            & > img{
+                width: 100px;
+                height: 100px;
+                border-radius: 20px;
+            }
+        }
+    
+        .user-request-info{
+            width: 100%;
+            grid-area: info;
+            text-align: left;
+            font-family: $secondaryFont;
+            padding: 0.2rem;
+    
+            & > div{
+                width: max-content;
+                margin-block: 0.2rem;
+            }
+    
+            & > div:nth-child(1) {
+                font-size: 2rem;
+                color: $h1;
+                margin-bottom: 1rem;
+            }
+    
+            & > div:nth-child(2) {
+                display: flex;
+                gap: 1rem;
+    
+                & > div{
+                    & > div {
+                        margin-bottom: 0.5rem;
+                        svg{
+                            color: $secondary;
+                            margin-right: 0.5rem;
+                        }
+                        span{
+                            color: $thirdText;
+                        }
+                    }
+                }
+            } 
+        }
+        
+        .options{
+            grid-area: button;
+            padding: 0.3rem;
+            display: flex;
+    
+            & > div{
+                flex-grow: 1;
+    
+                & > button{
+                    margin: 0.2rem;
+                }
+            }
+    
+            & > div:nth-child(1){
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+            }
+    
+            & > div:nth-child(2){
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+        }
+    }
+}

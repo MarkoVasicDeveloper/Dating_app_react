@@ -8,6 +8,7 @@ import { Button } from '../../layout/button/button';
 import { Modal } from '../../modal/modal';
 import './main.scss';
 import { MessageRequest } from './messageRequest/messageRequest';
+import { Shop } from './shop/shop';
 import { ShowUser } from './showUser/showUser';
 
 export function Main() {
@@ -18,6 +19,7 @@ export function Main() {
     const [ display, setDisplay ] = useState(0);
     const [ end, setEnd ] = useState(false);
     const [ sendMessageReguest, setSendMessageRequest ] = useState(false);
+    const [ shop, setShop ] = useState(false);
 
     const navigate = useNavigate();
 
@@ -57,13 +59,16 @@ export function Main() {
                                 <Button implementClass='forward-button' title={<FontAwesomeIcon icon={faArrowCircleLeft} />} onClickFunction={() => displayUser(-1)} />
                                 <Button implementClass='forward-button' title={<FontAwesomeIcon icon={faXmark} />} onClickFunction={() => displayUser(1)} />
                                 <Button implementClass='forward-button' title={<FontAwesomeIcon icon={faMessage} />} onClickFunction={() => setSendMessageRequest(!sendMessageReguest)} />
-                                <Button implementClass='forward-button' title={<FontAwesomeIcon icon={faGift} />} onClickFunction={() => displayUser(1)} />
+                                <Button implementClass='forward-button' title={<FontAwesomeIcon icon={faGift} />} onClickFunction={() => setShop(!shop)} />
                             </div>
                         </div> : <h1>Loading!</h1>
                 }
             </div>
             <Modal open={sendMessageReguest} close={() => setSendMessageRequest(!sendMessageReguest)}>
                 <MessageRequest destination={usersArray[display]} />
+            </Modal>
+            <Modal open={shop} close={() => setShop(!shop)} >
+                <Shop />
             </Modal>
         </>
     )
