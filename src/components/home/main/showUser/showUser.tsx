@@ -1,24 +1,27 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { UserContext } from '../../../../context/user.context';
 import { Gallery } from './gallery/gallery';
 import './showUser.scss';
 
 interface ShowUserProps{
     path: string
-    user: any
+    userToShow: any
     zIndex: number
     display: number
     end: boolean
 }
 
-export function ShowUser({ path, user, zIndex, display, end}: ShowUserProps) {
-
+export function ShowUser({ path, userToShow, zIndex, display, end}: ShowUserProps) {
+    
     const hide = useRef(null) as any;
     const didMountRef = useRef(false);
+
+    const [ user, setUser ] = useContext(UserContext) as any;
 
     const [ index, setIndex ] = useState(0);
 
     useEffect(() => {
-        if(end && display === user.length) return;
+        if(end && display === userToShow.length) return;
         if(zIndex === 1 && display === 0) return setIndex(display);
         if(zIndex === 1) return setIndex(display);
 
@@ -29,7 +32,7 @@ export function ShowUser({ path, user, zIndex, display, end}: ShowUserProps) {
     }, [display])
 
     useEffect(() => {
-        if(end && display === user.length) return;
+        if(end && display === userToShow.length) return;
         if(zIndex === 1 && !didMountRef.current) {
             didMountRef.current = true;
             return
@@ -63,18 +66,20 @@ export function ShowUser({ path, user, zIndex, display, end}: ShowUserProps) {
         'college': 'Fakultet'
     } as any;
 
+    const about = user.role === 'lady' ? userToShow[index]?.gentlemanAbouts[0] : userToShow[index]?.ladyAbouts[0]
+    
     const props = {
         zIndex,
-        photosLadies: user[index]?.photosLadies,
-        username: user[index]?.username,
-        city: user[index]?.city,
+        photos: user.role === 'lady' ? userToShow[index]?.photosGentlemen : userToShow[index]?.photosLadies,
+        username: userToShow[index]?.username,
+        city: userToShow[index]?.city,
         path,
         about: {
-            educations: schoolStatus[user[index]?.ladyAbouts[0].educations] || '',
-            maritalStatus: maritalStatus[user[index]?.ladyAbouts[0].maritalStatus] || '',
-            profession: user[index]?.ladyAbouts[0].profession || ''
+            educations: schoolStatus[about?.educations] || '',
+            maritalStatus: maritalStatus[about?.maritalStatus] || '',
+            profession: about?.profession || ''
         },
-        years: String(new Date().getFullYear() - user[index]?.dataOfBirth.slice(-4)) || ''
+        years: String(new Date().getFullYear() - userToShow[index]?.dateOfBirth.slice(-4)) || ''
     }
     
     return (

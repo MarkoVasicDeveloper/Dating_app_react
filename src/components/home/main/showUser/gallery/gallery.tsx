@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import './gallery.scss';
 
 interface GaleryProps {
-    photosLadies: any[]
+    photos: any[]
     username: string
     city?: string
     path: string
@@ -17,7 +17,7 @@ interface GaleryProps {
     years: string
 }
 
-export function Gallery({photosLadies, username, city, path, zIndex, about, years}: GaleryProps) {
+export function Gallery({photos, username, city, path, zIndex, about, years}: GaleryProps) {
 
     const galery = useRef(null) as any;
     const img = useRef(null) as any;
@@ -26,7 +26,7 @@ export function Gallery({photosLadies, username, city, path, zIndex, about, year
 
     useEffect(() => {
         galery.current.style.transform = `translate(${currentImg * galery.current.offsetWidth}px)`;
-        if(img.current) img.current.style.width = galery.current.offsetWidth / photosLadies.length;
+        if(img.current) img.current.style.width = galery.current.offsetWidth / photos.length;
         setCurrentImg(0)
     }, [zIndex]);
 
@@ -36,13 +36,13 @@ export function Gallery({photosLadies, username, city, path, zIndex, about, year
         imgBar.current.forEach((div: any) => {
             if(div) div.classList.remove('active');
         })
-        imgBar.current[currentImg || 0].classList.add('active');
+        imgBar.current[currentImg || 0]?.classList.add('active');
     }, [currentImg])
     
     function nextImg(value: number) {
         if(zIndex === 0) return;
         if(currentImg < 0 && value < 0) return setCurrentImg(0);
-        if(currentImg === photosLadies.length - 1 && value > 0) return;
+        if(currentImg === photos.length - 1 && value > 0) return;
         if(value > 0) return setCurrentImg((prev: any) => prev + 1);
         setCurrentImg((prev: any) => prev - 1);
     }
@@ -55,13 +55,13 @@ export function Gallery({photosLadies, username, city, path, zIndex, about, year
             </div>
             <div className="img-bar">
                 {
-                    photosLadies?.map((photo, index) => (
+                    photos?.map((photo, index) => (
                         <div ref={el => imgBar.current[index] = el} key={index} style={{ zIndex: zIndex === 0 ? 0 : 2 }}>{index + 1}</div>
                     ))
                 }
             </div>
             <div className="galery" ref={galery}>
-                {photosLadies?.map((photo, index) => (
+                {photos?.map((photo, index) => (
                     <img ref={img} key={index} src={`${path}/${username}/${photo.path}`} alt={username} />
                 ))}
             </div>

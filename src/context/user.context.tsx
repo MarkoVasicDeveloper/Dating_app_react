@@ -7,10 +7,14 @@ export function UserProvider ({ children } : any) {
         id: null,
         username: null,
         token: null,
-        role: null
+        role: null,
+        conversationRequest: [],
+        unreadedMessage: null
     });
 
-    const value = [ user, setUser ] as any;
+    const setUserEvent = (user: any) => setUser(() => user);
+
+    const value = [ user, setUserEvent ] as any;
 
     return (
         <UserContext.Provider value={value}>

@@ -42,7 +42,7 @@ export function Main() {
 
     const showUserProps = {
         path: user.otherPhotosDestination,
-        user: usersArray,
+        userToShow: usersArray,
         display,
         end
     }
