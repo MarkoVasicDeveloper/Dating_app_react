@@ -18,17 +18,24 @@ export function UserInfo({ request, otherPhotosDestination, index, remove }: Use
     const [ user, setUser ] = useContext(UserContext) as any;
     const [ hide, setHide ] = useState(false);
 
+    const requestBody = {
+        "id": user.id,
+        "username": user.username,
+        "lady": user.role === 'lady' ? true : false,
+        "userId" : user.role === 'lady' ? request.gentlemanId : request.ladyId ,
+        "userUsername": request.username
+    }
+
     async function acceptRequest() {
-        const requestBody = {
-            "id": user.id,
-            "username": user.username,
-            "lady": user.role === 'lady' ? true : false,
-            "userId" : user.role === 'lady' ? request.gentlemanId : request.ladyId ,
-            "userUsername": request.username
-        }
         const recive = await apiRequest('api/acceptConversation', 'post', requestBody, user.role);
         
         if(recive.status !== 'error') setHide(true);
+        remove(index);
+    }
+
+    async function denyTheRequest() {
+        const sendData = await apiRequest('api/deleteConversation', 'delete', requestBody, user.role);
+        if(sendData.status !== 'error') setHide(true);
         remove(index);
     }
     
@@ -67,7 +74,7 @@ export function UserInfo({ request, otherPhotosDestination, index, remove }: Use
             </div>
             <div className="options">
                 <div>
-                    <Button implementClass="danger-button" title={'ODBI'} onClickFunction={undefined} />
+                    <Button implementClass="danger-button" title={'ODBI'} onClickFunction={() => denyTheRequest()} />
                     <Button implementClass="safe" title={'Vidi profil'} onClickFunction={undefined} />
                 </div>
                 <div>

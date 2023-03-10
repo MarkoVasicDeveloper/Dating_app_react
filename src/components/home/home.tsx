@@ -89,7 +89,6 @@ export function Home() {
             <ConversationRequest remove={removeRequest} request={requestInfo}/>
           </Modal>
         </div>
-            <button onClick={() => console.log(requestInfo)}>sss</button>
       </section>
     );
 }
